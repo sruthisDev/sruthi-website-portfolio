@@ -118,12 +118,18 @@ export async function POST(req: NextRequest) {
 
     const genAI = new GoogleGenerativeAI(apiKey)
     const model = genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.0-flash',
       systemInstruction: RESUME_CONTEXT,
     })
 
-    // Build history for multi-turn chat (all messages except the last user one)
-    const history = messages.slice(0, -1).map((m) => ({
+    // Build history excluding the last message (which we send fresh)
+    // Gemini requires history to start with a 'user' role — strip any
+    // leading assistant messages (e.g. the initial greeting)
+    const prior = messages.slice(0, -1)
+    const firstUserIdx = prior.findIndex((m) => m.role === 'user')
+    const trimmed = firstUserIdx === -1 ? [] : prior.slice(firstUserIdx)
+
+    const history = trimmed.map((m) => ({
       role: m.role === 'user' ? 'user' : ('model' as const),
       parts: [{ text: m.content }],
     }))
