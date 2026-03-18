@@ -153,123 +153,121 @@ export default function Hero() {
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stone-50 dark:from-[#0c0a09] to-transparent" />
 
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-16">
-        {/* Profile photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.1, duration: 0.6, ease: 'easeOut' }}
-          className="flex justify-center mb-6"
-        >
-          <div className="relative w-28 h-28 rounded-full ring-4 ring-amber-400/40 dark:ring-amber-500/30 ring-offset-4 ring-offset-stone-50 dark:ring-offset-[#0c0a09] overflow-hidden bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-            <span className="text-white font-bold text-2xl select-none">SS</span>
-            <Image
-              src="/profile.jpg"
-              alt="Sruthi Satyavarapu"
-              fill
-              className="object-cover"
-              priority
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
-          </div>
-        </motion.div>
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 pt-16">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
-        {/* Available badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/25 text-amber-700 dark:text-amber-400 text-sm font-medium"
-        >
-          <Sparkles size={13} />
-          Available for AI/ML Opportunities
-        </motion.div>
+          {/* Photo — left */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1, duration: 0.7, ease: 'easeOut' }}
+            className="flex-shrink-0"
+          >
+            <div className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80 rounded-2xl overflow-hidden ring-4 ring-amber-400/30 dark:ring-amber-500/20 ring-offset-4 ring-offset-stone-50 dark:ring-offset-[#0c0a09] bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-2xl shadow-amber-500/10">
+              <span className="text-white font-bold text-5xl select-none">SS</span>
+              <Image
+                src="/profile.jpg"
+                alt="Sruthi Satyavarapu"
+                fill
+                className="object-cover object-top"
+                priority
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            </div>
+          </motion.div>
 
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.8, ease: 'easeOut' }}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-5 tracking-tight leading-tight"
-        >
-          <span className="text-stone-900 dark:text-stone-100">Sruthi </span>
-          <br className="sm:hidden" />
-          <span className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 dark:from-amber-400 dark:via-amber-300 dark:to-yellow-300 bg-clip-text text-transparent">
-            Satyavarapu
-          </span>
-        </motion.h1>
-
-        {/* Typewriter role */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="h-9 flex items-center justify-center gap-1 text-xl sm:text-2xl text-stone-600 dark:text-stone-400 font-light mb-6"
-        >
-          <span>{displayText}</span>
-          <span className="animate-blink w-0.5 h-6 bg-amber-500 dark:bg-amber-400 inline-block ml-0.5" />
-        </motion.div>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="text-stone-500 dark:text-stone-500 max-w-2xl mx-auto mb-10 text-base sm:text-lg leading-relaxed"
-        >
-          Masters student with 6+ years of industry experience. Building intelligent AI systems
-          — from modular RAG architectures to wearable health monitoring.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-12"
-        >
-          <a href="#projects" className="btn-primary">
-            View Projects
-          </a>
-          <a href="#contact" className="btn-outline">
-            Get In Touch
-          </a>
-        </motion.div>
-
-        {/* Social links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.85 }}
-          className="flex items-center justify-center gap-3"
-        >
-          {[
-            { icon: Github, href: 'https://github.com/sruthisDev', label: 'GitHub' },
-            {
-              icon: Linkedin,
-              href: 'https://linkedin.com/in/sruthi-satyavarapu/',
-              label: 'LinkedIn',
-            },
-            {
-              icon: Mail,
-              href: 'mailto:s.satyavarapu@u.pacific.edu',
-              label: 'Email',
-            },
-          ].map(({ icon: Icon, href, label }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-3 rounded-full bg-white/80 dark:bg-stone-800/60 border border-stone-200 dark:border-stone-700 text-stone-500 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-400/60 dark:hover:border-amber-500/40 transition-colors shadow-sm"
-              aria-label={label}
+          {/* Text — right */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Available badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-amber-100 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/25 text-amber-700 dark:text-amber-400 text-sm font-medium"
             >
-              <Icon size={19} />
-            </motion.a>
-          ))}
-        </motion.div>
+              <Sparkles size={13} />
+              Available for AI/ML Opportunities
+            </motion.div>
+
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.8, ease: 'easeOut' }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 tracking-tight leading-tight"
+            >
+              <span className="text-stone-900 dark:text-stone-100">Sruthi </span>
+              <br className="sm:hidden" />
+              <span className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 dark:from-amber-400 dark:via-amber-300 dark:to-yellow-300 bg-clip-text text-transparent">
+                Satyavarapu
+              </span>
+            </motion.h1>
+
+            {/* Typewriter role */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="h-9 flex items-center justify-center lg:justify-start gap-1 text-xl sm:text-2xl text-stone-600 dark:text-stone-400 font-light mb-5"
+            >
+              <span>{displayText}</span>
+              <span className="animate-blink w-0.5 h-6 bg-amber-500 dark:bg-amber-400 inline-block ml-0.5" />
+            </motion.div>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="text-stone-500 dark:text-stone-500 max-w-xl mb-8 text-base sm:text-lg leading-relaxed"
+            >
+              Masters student with 6+ years of industry experience. Building intelligent AI systems
+              — from modular RAG architectures to wearable health monitoring.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8"
+            >
+              <a href="#projects" className="btn-primary">
+                View Projects
+              </a>
+              <a href="#contact" className="btn-outline">
+                Get In Touch
+              </a>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.85 }}
+              className="flex items-center justify-center lg:justify-start gap-3"
+            >
+              {[
+                { icon: Github, href: 'https://github.com/sruthisDev', label: 'GitHub' },
+                { icon: Linkedin, href: 'https://linkedin.com/in/sruthi-satyavarapu/', label: 'LinkedIn' },
+                { icon: Mail, href: 'mailto:hello@sruthirao.com', label: 'Email' },
+              ].map(({ icon: Icon, href, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-3 rounded-full bg-white/80 dark:bg-stone-800/60 border border-stone-200 dark:border-stone-700 text-stone-500 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-400/60 dark:hover:border-amber-500/40 transition-colors shadow-sm"
+                  aria-label={label}
+                >
+                  <Icon size={19} />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Scroll indicator */}

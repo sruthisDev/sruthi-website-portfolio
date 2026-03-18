@@ -60,9 +60,9 @@ const projects = [
   },
   {
     title: 'Weather & Music Trends Analysis',
-    status: 'Ongoing',
+    status: 'Completed',
     description:
-      'Exploratory data analysis of music chart trends and their correlation with weather patterns across regions.',
+      'Analyzed 6 months of daily top chart data across 106 cities. EDA surfaced a key insight: sunny weather is associated with listener preference for high-BPM tracks, suggesting mood-driven music consumption patterns.',
     icon: CloudRain,
     type: 'Data Science',
     featured: false,
