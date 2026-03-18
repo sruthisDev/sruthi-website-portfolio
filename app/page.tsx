@@ -19,9 +19,9 @@ export default function Home() {
       <SectionPrelude />
       <Hero />
       <About />
+      <Projects />
       <Skills />
       <Experience />
-      <Projects />
       <Education />
       <Contact />
       <Footer />
