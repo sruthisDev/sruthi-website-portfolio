@@ -104,44 +104,95 @@ export interface ChatMessage {
   content: string
 }
 
+// OpenAI-compatible chat (used for Groq and OpenRouter)
+async function callOpenAICompatible(
+  baseUrl: string,
+  apiKey: string,
+  model: string,
+  messages: ChatMessage[]
+): Promise<string> {
+  const body = {
+    model,
+    messages: [
+      { role: 'system', content: RESUME_CONTEXT },
+      ...messages.map((m) => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content })),
+    ],
+  }
+
+  const res = await fetch(`${baseUrl}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify(body),
+  })
+
+  if (!res.ok) {
+    const error = Object.assign(new Error('Provider error'), { status: res.status })
+    throw error
+  }
+
+  const data = await res.json()
+  return data.choices[0].message.content
+}
+
+async function callGemini(apiKey: string, messages: ChatMessage[]): Promise<string> {
+  const genAI = new GoogleGenerativeAI(apiKey)
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-2.0-flash-lite',
+    systemInstruction: RESUME_CONTEXT,
+  })
+
+  const prior = messages.slice(0, -1)
+  const firstUserIdx = prior.findIndex((m) => m.role === 'user')
+  const trimmed = firstUserIdx === -1 ? [] : prior.slice(firstUserIdx)
+
+  const history = trimmed.map((m) => ({
+    role: m.role === 'user' ? 'user' : ('model' as const),
+    parts: [{ text: m.content }],
+  }))
+
+  const chat = model.startChat({ history })
+  const lastMessage = messages[messages.length - 1]
+  const result = await chat.sendMessage(lastMessage.content)
+  return result.response.text()
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY
-    if (!apiKey) {
-      return NextResponse.json({ error: 'API key not configured' }, { status: 500 })
-    }
-
     const { messages }: { messages: ChatMessage[] } = await req.json()
     if (!messages || messages.length === 0) {
       return NextResponse.json({ error: 'No messages provided' }, { status: 400 })
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey)
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash',
-      systemInstruction: RESUME_CONTEXT,
-    })
+    const provider = (process.env.AI_PROVIDER ?? 'gemini').toLowerCase()
+    let text: string
 
-    // Build history excluding the last message (which we send fresh)
-    // Gemini requires history to start with a 'user' role — strip any
-    // leading assistant messages (e.g. the initial greeting)
-    const prior = messages.slice(0, -1)
-    const firstUserIdx = prior.findIndex((m) => m.role === 'user')
-    const trimmed = firstUserIdx === -1 ? [] : prior.slice(firstUserIdx)
-
-    const history = trimmed.map((m) => ({
-      role: m.role === 'user' ? 'user' : ('model' as const),
-      parts: [{ text: m.content }],
-    }))
-
-    const chat = model.startChat({ history })
-    const lastMessage = messages[messages.length - 1]
-    const result = await chat.sendMessage(lastMessage.content)
-    const text = result.response.text()
+    if (provider === 'groq') {
+      const apiKey = process.env.GROQ_API_KEY
+      if (!apiKey) return NextResponse.json({ error: 'GROQ_API_KEY not configured' }, { status: 500 })
+      text = await callOpenAICompatible('https://api.groq.com/openai/v1', apiKey, 'llama-3.3-70b-versatile', messages)
+    } else if (provider === 'openrouter') {
+      const apiKey = process.env.OPENROUTER_API_KEY
+      if (!apiKey) return NextResponse.json({ error: 'OPENROUTER_API_KEY not configured' }, { status: 500 })
+      text = await callOpenAICompatible('https://openrouter.ai/api/v1', apiKey, 'meta-llama/llama-3.3-70b-instruct:free', messages)
+    } else {
+      const apiKey = process.env.GEMINI_API_KEY
+      if (!apiKey) return NextResponse.json({ error: 'GEMINI_API_KEY not configured' }, { status: 500 })
+      text = await callGemini(apiKey, messages)
+    }
 
     return NextResponse.json({ message: text })
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('Chat API error:', err)
+    const status = (err as { status?: number }).status
+    if (status === 429) {
+      return NextResponse.json(
+        { error: 'rate_limited', message: "I'm getting a lot of questions right now! Please wait a moment and try again." },
+        { status: 429 }
+      )
+    }
     return NextResponse.json({ error: 'Failed to get response' }, { status: 500 })
   }
 }

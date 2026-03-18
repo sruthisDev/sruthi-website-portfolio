@@ -9,6 +9,49 @@ interface Message {
   content: string
 }
 
+function renderMarkdown(text: string) {
+  const lines = text.split('\n')
+  const elements: React.ReactNode[] = []
+  let listItems: string[] = []
+
+  const flushList = (key: string) => {
+    if (listItems.length === 0) return
+    elements.push(
+      <ul key={key} className="list-disc list-inside space-y-0.5 my-1">
+        {listItems.map((item, i) => (
+          <li key={i}>{formatInline(item)}</li>
+        ))}
+      </ul>
+    )
+    listItems = []
+  }
+
+  lines.forEach((line, i) => {
+    const trimmed = line.trim()
+    if (/^[*-] /.test(trimmed)) {
+      listItems.push(trimmed.replace(/^[*-] /, ''))
+    } else {
+      flushList(`list-${i}`)
+      if (trimmed === '') {
+        elements.push(<br key={i} />)
+      } else {
+        elements.push(<p key={i} className="my-0.5">{formatInline(trimmed)}</p>)
+      }
+    }
+  })
+  flushList('list-end')
+  return elements
+}
+
+function formatInline(text: string): React.ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return parts.map((part, i) =>
+    part.startsWith('**') && part.endsWith('**')
+      ? <strong key={i}>{part.slice(2, -2)}</strong>
+      : part
+  )
+}
+
 const SUGGESTED = [
   'What are her AI/ML skills?',
   'Tell me about her research',
@@ -78,13 +121,11 @@ export default function ChatWidget() {
         body: JSON.stringify({ messages: updated }),
       })
       const data = await res.json()
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: data.message || 'Sorry, I had trouble with that. Please try again.',
-        },
-      ])
+      const content =
+        res.status === 429
+          ? data.message
+          : data.message || 'Sorry, I had trouble with that. Please try again.'
+      setMessages((prev) => [...prev, { role: 'assistant', content }])
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -166,7 +207,7 @@ export default function ChatWidget() {
                         : 'bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 rounded-2xl rounded-bl-sm'
                     }`}
                   >
-                    {msg.content}
+                    {msg.role === 'assistant' ? renderMarkdown(msg.content) : msg.content}
                   </div>
                 </motion.div>
               ))}

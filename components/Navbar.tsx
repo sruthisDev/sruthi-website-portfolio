@@ -93,25 +93,23 @@ export default function Navbar() {
           {/* Controls */}
           <div className="flex items-center gap-3">
             {mounted && (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2.5 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-stone-700 transition-all duration-200 border border-stone-200 dark:border-stone-700"
                 aria-label="Toggle theme"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-200 dark:border-stone-700 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:border-amber-400 dark:hover:border-amber-500 transition-all duration-200 text-xs font-medium"
               >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={theme}
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-                  </motion.div>
-                </AnimatePresence>
-              </motion.button>
+                {theme === 'dark' ? (
+                  <>
+                    <Sun size={13} className="text-amber-400" />
+                    <span>Light mode</span>
+                  </>
+                ) : (
+                  <>
+                    <Moon size={13} className="text-stone-500" />
+                    <span>Dark mode</span>
+                  </>
+                )}
+              </button>
             )}
 
             <button

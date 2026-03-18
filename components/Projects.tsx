@@ -2,7 +2,16 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Brain, BarChart3, Gamepad2, CloudRain, Github, HeartPulse } from 'lucide-react'
+import { Brain, BarChart3, Gamepad2, CloudRain, HeartPulse } from 'lucide-react'
+
+function GitHubIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  )
+}
 
 const projects = [
   {
@@ -14,6 +23,7 @@ const projects = [
     type: 'AI/ML',
     featured: true,
     tech: ['AWS Bedrock', 'MongoDB', 'FastAPI', 'React', 'Python'],
+    github: 'https://github.com/sruthisDev/AWS-Hackathon-Elderly-AI-Companion',
   },
   {
     title: 'Modular RAG Chatbot Architecture',
@@ -24,6 +34,7 @@ const projects = [
     type: 'AI/ML',
     featured: true,
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
+    github: 'https://github.com/sruthisDev/Modular-Chatbot',
   },
   {
     title: 'Strawberry Ripeness Classifier',
@@ -34,6 +45,7 @@ const projects = [
     type: 'Machine Learning',
     featured: false,
     tech: ['Python', 'Scikit-learn', 'Pandas'],
+    github: 'https://github.com/sruthisDev/Strawberry_Ripeness_Classification',
   },
   {
     title: 'Adidas Sales Dashboard',
@@ -44,6 +56,7 @@ const projects = [
     type: 'Data Viz',
     featured: false,
     tech: ['Python', 'Tableau'],
+    github: 'https://github.com/sruthisDev/Adidas-Sales-Dashboard',
   },
   {
     title: 'Weather & Music Trends Analysis',
@@ -54,6 +67,7 @@ const projects = [
     type: 'Data Science',
     featured: false,
     tech: ['Python', 'Matplotlib', 'Seaborn', 'Tableau'],
+    github: 'https://github.com/sruthisDev/Weather-Impact-On-Music-Trends',
   },
   {
     title: 'Desert Survival Game',
@@ -64,6 +78,7 @@ const projects = [
     type: 'Game Dev',
     featured: false,
     tech: ['C++'],
+    github: null,
   },
 ]
 
@@ -146,16 +161,30 @@ export default function Projects() {
                   {project.title}
                 </h3>
 
-                <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed mb-4 flex-1">
+                <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed flex-1">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tech.map((t) => (
-                    <span key={t} className="tag-stone">
-                      {t}
-                    </span>
-                  ))}
+                <div className="flex items-center justify-between gap-2 mt-auto pt-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tech.map((t) => (
+                      <span key={t} className="tag-stone">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex-shrink-0 p-1.5 rounded-lg text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-all"
+                      aria-label="View on GitHub"
+                    >
+                      <GitHubIcon size={16} />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             )
@@ -174,7 +203,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="btn-outline inline-flex items-center gap-2"
           >
-            <Github size={17} />
+            <GitHubIcon size={17} />
             View More on GitHub
           </a>
         </motion.div>
