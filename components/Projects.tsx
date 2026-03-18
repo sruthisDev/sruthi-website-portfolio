@@ -29,7 +29,7 @@ const projects = [
     title: 'Modular RAG Chatbot Architecture',
     status: 'Research',
     description:
-      'Plug-and-play system architecture for RAG chatbots enabling component swapping (vector DBs, embedding models, LLMs) for multi-domain adaptability.',
+      'Modular, service-oriented RAG architecture with plug-and-play swapping of embedding models, vector DBs, and LLM backends. Built end-to-end with ReactJS, FastAPI, and ChromaDB with hybrid retrieval and reranking. Conducting controlled multi-domain evaluation using Recall@5, MRR, and human-assessed quality metrics.',
     icon: Brain,
     type: 'AI/ML',
     featured: true,

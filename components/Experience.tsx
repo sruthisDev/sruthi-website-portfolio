@@ -13,9 +13,9 @@ const experiences = [
     period: 'June 2025 – Present',
     project: 'Domain-Adaptive Modular Conversational AI Architecture',
     bullets: [
-      'Designing a plug-and-play modular system for RAG chatbots enabling easy component swapping (vector DBs, embedding models, LLMs) for multi-domain adaptability.',
-      'Built a prototype with ReactJS frontend and FastAPI backend, integrating ChromaDB with re-ranking and query expansion to enhance response relevance.',
-      'Developing domain packs to support scalable, reusable deployment across diverse domains.',
+      'Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign.',
+      'Built end-to-end prototype with ReactJS frontend, FastAPI orchestration backend, and ChromaDB vector store with hybrid retrieval, reranking, and query expansion.',
+      'Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability.',
     ],
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
   },

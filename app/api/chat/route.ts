@@ -90,7 +90,9 @@ PROJECTS:
    Technologies: AWS Bedrock, MongoDB, FastAPI, React, Python
 
 2. Modular RAG Chatbot Architecture [Ongoing / Research]
-   - Plug-and-play RAG system for multi-domain adaptability
+   - Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign
+   - Built end-to-end prototype: ReactJS frontend, FastAPI orchestration backend, ChromaDB vector store with hybrid retrieval, reranking, and query expansion
+   - Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability
    Technologies: Python, ChromaDB, HuggingFace, Ollama, FastAPI, ReactJS
 
 3. Strawberry Fruit Ripeness Classifier [Ongoing]
