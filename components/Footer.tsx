@@ -11,7 +11,7 @@ function GitHubIcon({ size = 17 }: { size?: number }) {
 
 export default function Footer() {
   return (
-    <footer className="py-8 px-4 bg-stone-900 dark:bg-stone-950 border-t border-stone-800">
+    <footer className="py-8 px-4 bg-stone-900 dark:bg-[#0f172a] border-t border-stone-800">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
           <p className="text-stone-500">

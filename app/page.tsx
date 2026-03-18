@@ -13,7 +13,7 @@ import SectionPrelude from '@/components/SectionPrelude'
 
 export default function Home() {
   return (
-    <main className="bg-stone-50 dark:bg-[#0c0a09] min-h-screen">
+    <main className="bg-stone-50 dark:bg-[#0f172a] min-h-screen">
       <Navbar />
       <SectionIndicator />
       <SectionPrelude />

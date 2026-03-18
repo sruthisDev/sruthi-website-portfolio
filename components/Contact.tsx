@@ -41,7 +41,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-4 bg-stone-50 dark:bg-[#0c0a09]">
+    <section id="contact" className="py-24 px-4 bg-stone-50 dark:bg-[#0f172a]">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -140,7 +140,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-amber-400/60 hover:text-amber-600 dark:hover:text-amber-400 dark:hover:border-amber-500/40 transition-all text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-stone-200 dark:border-white/15 text-stone-600 dark:text-stone-300 hover:border-amber-400/60 hover:text-amber-600 dark:hover:text-amber-400 dark:hover:border-amber-500/40 transition-all text-sm font-medium"
                 >
                   <Icon size={15} />
                   {label}
@@ -203,7 +203,7 @@ export default function Contact() {
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, [field.name]: e.target.value }))
                       }
-                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
                     />
                   </div>
                 ))}
@@ -218,7 +218,7 @@ export default function Contact() {
                     required
                     value={form.message}
                     onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all resize-none"
                   />
                 </div>
 

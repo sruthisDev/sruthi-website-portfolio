@@ -12,7 +12,7 @@ const categories = [
     bgClass: 'bg-amber-100 dark:bg-amber-500/10',
     borderHover: 'hover:border-amber-500/40',
     tagClass:
-      'bg-amber-50 dark:bg-amber-500/8 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/25',
+      'bg-amber-50 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/25',
     skills: [
       'Scikit-learn', 'TensorFlow', 'HuggingFace', 'LangChain',
       'Sentence Transformers', 'Pandas', 'NumPy', 'Matplotlib',
@@ -26,7 +26,7 @@ const categories = [
     bgClass: 'bg-orange-100 dark:bg-orange-500/10',
     borderHover: 'hover:border-orange-500/40',
     tagClass:
-      'bg-orange-50 dark:bg-orange-500/8 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/25',
+      'bg-orange-50 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/25',
     skills: ['Python', 'JavaScript', 'TypeScript', 'PHP', 'C++'],
   },
   {
@@ -36,7 +36,7 @@ const categories = [
     bgClass: 'bg-yellow-100 dark:bg-yellow-500/10',
     borderHover: 'hover:border-yellow-500/40',
     tagClass:
-      'bg-yellow-50 dark:bg-yellow-500/8 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-500/25',
+      'bg-yellow-50 dark:bg-yellow-500/20 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-500/25',
     skills: [
       'ReactJS', 'FastAPI', 'HTML/CSS', 'Bootstrap',
       'D3.js', 'jQuery', 'AJAX', 'Drupal', 'Yii', 'Laravel',
@@ -49,7 +49,7 @@ const categories = [
     bgClass: 'bg-amber-100 dark:bg-amber-500/10',
     borderHover: 'hover:border-amber-500/40',
     tagClass:
-      'bg-amber-50 dark:bg-amber-500/8 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/25',
+      'bg-amber-50 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/25',
     skills: ['MySQL', 'MongoDB', 'ChromaDB', 'Pinecone'],
   },
   {
@@ -59,7 +59,7 @@ const categories = [
     bgClass: 'bg-orange-100 dark:bg-orange-500/10',
     borderHover: 'hover:border-orange-500/40',
     tagClass:
-      'bg-orange-50 dark:bg-orange-500/8 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/25',
+      'bg-orange-50 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/25',
     skills: ['Git', 'GitHub', 'AWS Bedrock', 'Ollama', 'Tableau'],
   },
 ]
@@ -69,7 +69,7 @@ export default function Skills() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="skills" className="py-24 px-4 bg-stone-50 dark:bg-[#0c0a09]">
+    <section id="skills" className="py-24 px-4 bg-stone-50 dark:bg-[#0f172a]">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

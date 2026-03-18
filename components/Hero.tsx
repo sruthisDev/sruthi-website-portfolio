@@ -142,7 +142,7 @@ export default function Hero() {
   }, [displayText, isDeleting, roleIndex])
 
   return (
-    <section className="relative min-h-screen flex overflow-hidden bg-stone-50 dark:bg-[#0c0a09]">
+    <section className="relative min-h-screen flex overflow-hidden bg-stone-50 dark:bg-[#0f172a]">
       {/* Neural network canvas */}
       <canvas
         ref={canvasRef}
@@ -251,7 +251,7 @@ export default function Hero() {
       >
         <div className="relative w-72 h-72 xl:w-80 xl:h-80">
           {/* Background offset square */}
-          <div className="absolute top-8 left-8 w-full h-full bg-gradient-to-br from-amber-300 to-orange-300 rounded-sm brightness-90" />
+          <div className="absolute top-8 left-8 w-full h-full bg-gradient-to-br from-amber-300 to-orange-300 dark:bg-amber-500 dark:from-amber-500 dark:to-amber-500 rounded-sm brightness-90" />
           {/* Photo square */}
           <div className="relative w-full h-full overflow-hidden rounded-sm bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
             <span className="text-white font-bold text-7xl select-none opacity-30">SS</span>
