@@ -160,6 +160,25 @@ export default function Hero() {
 
       {/* Left — text content */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[65%] pl-20 pr-8 sm:pl-28 sm:pr-12 lg:pl-40 lg:pr-16 xl:pl-52 xl:pr-20 pt-20 pb-24">
+
+        {/* Mobile photo — shown only below lg */}
+        <div className="lg:hidden flex justify-center mb-8">
+          <div className="relative w-32 h-32">
+            <div className="absolute top-2 left-2 w-full h-full bg-gradient-to-br from-amber-300 to-orange-300 dark:bg-amber-500 dark:from-amber-500 dark:to-amber-500 rounded-sm brightness-90" />
+            <div className="relative w-full h-full overflow-hidden rounded-sm bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+              <span className="text-white font-bold text-3xl select-none opacity-30">SS</span>
+              <Image
+                src="/profile.jpg"
+                alt="Sruthi Satyavarapu"
+                fill
+                className="object-cover object-top"
+                priority
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            </div>
+          </div>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
-import { Briefcase, Brain, GraduationCap, Building2 } from 'lucide-react'
+import { Briefcase, Brain, GraduationCap, Star } from 'lucide-react'
 
 function CountUp({ to, duration = 2 }: { to: number; duration?: number }) {
   const [count, setCount] = useState(0)
@@ -32,7 +32,7 @@ const stats = [
   { icon: Briefcase, value: 6, suffix: '+', label: 'Years Experience' },
   { icon: Brain, value: 5, suffix: '+', label: 'AI/ML Projects' },
   { icon: GraduationCap, value: 3, suffix: '', label: 'Degrees Earned' },
-  { icon: Building2, value: 6, suffix: '+', label: 'Companies' },
+  { icon: Star, value: 4, suffix: '.0', label: 'GPA' },
 ]
 
 const highlights = [
@@ -92,8 +92,7 @@ export default function About() {
               <strong className="text-amber-600 dark:text-amber-400 font-semibold">
                 modular conversational AI architectures
               </strong>{' '}
-              and fall detection using multi-sensor wearable data — building systems that
-              are technically rigorous and practically impactful.
+              — building systems that are technically rigorous and practically impactful.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
