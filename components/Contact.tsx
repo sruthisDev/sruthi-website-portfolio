@@ -8,14 +8,27 @@ export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = `Portfolio Contact from ${form.name}`
-    const body = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-    window.location.href = `mailto:s.satyavarapu@u.pacific.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSent(true)
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Failed')
+      setSent(true)
+    } catch {
+      setError('Something went wrong. Please email directly at hello@sruthirao.com')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -146,7 +159,7 @@ export default function Contact() {
                   Message Sent!
                 </h3>
                 <p className="text-stone-500 dark:text-stone-400 max-w-xs">
-                  Your email client should have opened. I&apos;ll get back to you soon.
+                  Thanks for reaching out! Sruthi will get back to you soon.
                 </p>
                 <button
                   onClick={() => {
@@ -200,14 +213,18 @@ export default function Contact() {
                   />
                 </div>
 
+                {error && (
+                  <p className="text-sm text-red-500 dark:text-red-400">{error}</p>
+                )}
                 <motion.button
                   type="submit"
+                  disabled={loading}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30"
+                  className="w-full py-3.5 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-400 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 disabled:cursor-not-allowed"
                 >
                   <Send size={17} />
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             )}
