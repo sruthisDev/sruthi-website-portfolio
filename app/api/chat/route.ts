@@ -27,7 +27,7 @@ Answer questions about Sruthi Satyavarapu based solely on the information below.
 === SRUTHI SATYAVARAPU — FULL PROFILE ===
 
 CONTACT:
-- Email: s.satyavarapu@u.pacific.edu
+- Email: sruthiraosatyavarapu@gmail.com
 - Phone: +1 (510) 365-2100
 - Location: Santa Clara, CA 95054
 - GitHub: github.com/sruthisDev
@@ -51,10 +51,11 @@ WORK EXPERIENCE:
    - Developing domain packs for scalable, reusable multi-domain deployment
    Technologies: Python, ChromaDB, HuggingFace, Ollama, FastAPI, ReactJS
 
-2. Research Assistant — University of the Pacific (June 2025 – Present)
+2. Research Assistant — University of the Pacific (June 2025 – Dec 2025)
    Project: Position & Sleep Tracking using Wearable Sensor Data (Fall Detection)
-   - Designing fall detection and sleep monitoring algorithms using multi-sensor wearable data (accelerometer, gyroscope, PPG)
-   - Applying data preprocessing, feature extraction, and ML for activity classification
+   - Worked on a proprietary wearable device to improve fall detection and sleep monitoring using multi-sensor data (accelerometer, gyroscope, PPG)
+   - Enhanced model performance through signal preprocessing, time-series feature extraction, and sensor fusion techniques
+   - Improved activity classification accuracy via optimized ML pipelines, contributing to more reliable real-time inference on edge data
    Technologies: Python, Pandas, NumPy, Scikit-learn, Matplotlib
 
 3. PHP Developer — Tata Consultancy Services (TCS), Hyderabad (July 2021 – March 2023)
@@ -89,7 +90,9 @@ PROJECTS:
    Technologies: AWS Bedrock, MongoDB, FastAPI, React, Python
 
 2. Modular RAG Chatbot Architecture [Ongoing / Research]
-   - Plug-and-play RAG system for multi-domain adaptability
+   - Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign
+   - Built end-to-end prototype: ReactJS frontend, FastAPI orchestration backend, ChromaDB vector store with hybrid retrieval, reranking, and query expansion
+   - Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability
    Technologies: Python, ChromaDB, HuggingFace, Ollama, FastAPI, ReactJS
 
 3. Strawberry Fruit Ripeness Classifier [Ongoing]
@@ -100,8 +103,9 @@ PROJECTS:
    - Tableau dashboard analyzing 2023-2024 Adidas sales, regional trends, product insights
    Technologies: Python, Tableau
 
-5. Weather & Music Trends Analysis [Ongoing]
-   - Exploratory data analysis: music chart trends correlated with weather patterns
+5. Weather & Music Trends Analysis [Completed]
+   - Analyzed 6 months of daily top chart data across 106 cities to study weather-music correlations
+   - Key insight: sunny weather is associated with listener preference for high-BPM tracks, suggesting mood-driven music consumption patterns
    Technologies: Python, Matplotlib, Seaborn, Tableau
 
 6. Desert Survival Game [Completed]

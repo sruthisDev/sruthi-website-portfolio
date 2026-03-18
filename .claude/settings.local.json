@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i 's/#0f172a/#0c0a09/g' components/Hero.tsx components/Skills.tsx components/Projects.tsx components/Contact.tsx app/page.tsx)",
+      "Bash(sed -i 's/dark:bg-\\\\[#0f172a\\\\]\\\\/60/dark:bg-stone-950\\\\/40/g' components/About.tsx components/Experience.tsx components/Education.tsx)",
+      "Bash(sed -i 's/dark:bg-\\\\[#0a1020\\\\]/dark:bg-stone-950/g' components/Footer.tsx)",
+      "Bash(sed -i 's/dark:bg-stone-950\\\\/40/dark:bg-\\\\[#0f172a\\\\]/g' components/About.tsx components/Experience.tsx components/Education.tsx)",
+      "Bash(sed -i 's/dark:bg-stone-950/dark:bg-\\\\[#0f172a\\\\]/g' components/Footer.tsx)",
+      "Bash(sed -i 's/bg-white dark:bg-\\\\[#0f172a\\\\]/bg-white dark:bg-\\\\[#0f172a\\\\]/g' components/About.tsx components/Experience.tsx components/Education.tsx)",
+      "Bash(sed -i 's/dark:bg-stone-900 border border-stone-200 dark:border-stone-700/dark:bg-white\\\\/5 border border-stone-200 dark:border-white\\\\/10/g' components/Contact.tsx)",
+      "Bash(sed -i 's/dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600/dark:border-white\\\\/10 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500/g' components/Contact.tsx)"
+    ]
+  }
+}

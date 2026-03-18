@@ -29,7 +29,7 @@ const projects = [
     title: 'Modular RAG Chatbot Architecture',
     status: 'Research',
     description:
-      'Plug-and-play system architecture for RAG chatbots enabling component swapping (vector DBs, embedding models, LLMs) for multi-domain adaptability.',
+      'Modular, service-oriented RAG architecture with plug-and-play swapping of embedding models, vector DBs, and LLM backends. Built end-to-end with ReactJS, FastAPI, and ChromaDB with hybrid retrieval and reranking. Conducting controlled multi-domain evaluation using Recall@5, MRR, and human-assessed quality metrics.',
     icon: Brain,
     type: 'AI/ML',
     featured: true,
@@ -60,9 +60,9 @@ const projects = [
   },
   {
     title: 'Weather & Music Trends Analysis',
-    status: 'Ongoing',
+    status: 'Completed',
     description:
-      'Exploratory data analysis of music chart trends and their correlation with weather patterns across regions.',
+      'Analyzed 6 months of daily top chart data across 106 cities. EDA surfaced a key insight: sunny weather is associated with listener preference for high-BPM tracks, suggesting mood-driven music consumption patterns.',
     icon: CloudRain,
     type: 'Data Science',
     featured: false,
@@ -106,7 +106,7 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="projects" className="py-24 px-4 bg-stone-50 dark:bg-[#0c0a09]">
+    <section id="projects" className="py-24 px-4 bg-stone-50 dark:bg-[#0f172a]">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

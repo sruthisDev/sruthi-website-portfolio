@@ -2,7 +2,16 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Mail, MapPin, Phone, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, Linkedin, Send, CheckCircle } from 'lucide-react'
+
+function GitHubIcon({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  )
+}
 
 export default function Contact() {
   const ref = useRef(null)
@@ -32,7 +41,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-4 bg-stone-50 dark:bg-[#0c0a09]">
+    <section id="contact" className="py-24 px-4 bg-stone-50 dark:bg-[#0f172a]">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -76,8 +85,8 @@ export default function Contact() {
                 {
                   icon: Mail,
                   label: 'Email',
-                  value: 's.satyavarapu@u.pacific.edu',
-                  href: 'mailto:s.satyavarapu@u.pacific.edu',
+                  value: 'sruthiraosatyavarapu@gmail.com',
+                  href: 'mailto:sruthiraosatyavarapu@gmail.com',
                 },
                 {
                   icon: Phone,
@@ -88,7 +97,7 @@ export default function Contact() {
                 {
                   icon: MapPin,
                   label: 'Location',
-                  value: 'Santa Clara, CA 95054',
+                  value: 'San Jose, CA 95134',
                   href: null,
                 },
               ].map(({ icon: Icon, label, value, href }) => (
@@ -117,7 +126,7 @@ export default function Contact() {
 
             <div className="flex gap-3">
               {[
-                { icon: Github, href: 'https://github.com/sruthisDev', label: 'GitHub' },
+                { icon: GitHubIcon, href: 'https://github.com/sruthisDev', label: 'GitHub' },
                 {
                   icon: Linkedin,
                   href: 'https://linkedin.com/in/sruthi-satyavarapu/',
@@ -131,7 +140,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-amber-400/60 hover:text-amber-600 dark:hover:text-amber-400 dark:hover:border-amber-500/40 transition-all text-sm font-medium"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-stone-200 dark:border-white/15 text-stone-600 dark:text-stone-300 hover:border-amber-400/60 hover:text-amber-600 dark:hover:text-amber-400 dark:hover:border-amber-500/40 transition-all text-sm font-medium"
                 >
                   <Icon size={15} />
                   {label}
@@ -194,7 +203,7 @@ export default function Contact() {
                       onChange={(e) =>
                         setForm((prev) => ({ ...prev, [field.name]: e.target.value }))
                       }
-                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
                     />
                   </div>
                 ))}
@@ -209,7 +218,7 @@ export default function Contact() {
                     required
                     value={form.message}
                     onChange={(e) => setForm((prev) => ({ ...prev, message: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/5 border border-stone-200 dark:border-white/10 text-stone-900 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-600 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all resize-none"
                   />
                 </div>
 

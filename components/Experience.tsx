@@ -13,9 +13,9 @@ const experiences = [
     period: 'June 2025 – Present',
     project: 'Domain-Adaptive Modular Conversational AI Architecture',
     bullets: [
-      'Designing a plug-and-play modular system for RAG chatbots enabling easy component swapping (vector DBs, embedding models, LLMs) for multi-domain adaptability.',
-      'Built a prototype with ReactJS frontend and FastAPI backend, integrating ChromaDB with re-ranking and query expansion to enhance response relevance.',
-      'Developing domain packs to support scalable, reusable deployment across diverse domains.',
+      'Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign.',
+      'Built end-to-end prototype with ReactJS frontend, FastAPI orchestration backend, and ChromaDB vector store with hybrid retrieval, reranking, and query expansion.',
+      'Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability.',
     ],
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
   },
@@ -24,11 +24,12 @@ const experiences = [
     title: 'Research Assistant',
     company: 'University of the Pacific',
     location: 'Stockton, CA',
-    period: 'June 2025 – Present',
+    period: 'June 2025 – Dec 2025',
     project: 'Position & Sleep Tracking via Wearable Sensor Data',
     bullets: [
-      'Designing fall detection and sleep monitoring algorithms using multi-sensor wearable data (accelerometer, gyroscope, PPG).',
-      'Applying data preprocessing, feature extraction, and ML techniques to enhance activity classification accuracy.',
+      'Worked on a proprietary wearable device to improve fall detection and sleep monitoring using multi-sensor data (accelerometer, gyroscope, PPG).',
+      'Enhanced model performance through signal preprocessing, time-series feature extraction, and sensor fusion techniques.',
+      'Improved activity classification accuracy via optimized ML pipelines, contributing to more reliable real-time inference on edge data.',
     ],
     tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib'],
   },
@@ -101,7 +102,7 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="experience" className="py-24 px-4 bg-white dark:bg-stone-950/40">
+    <section id="experience" className="py-24 px-4 bg-white dark:bg-[#0f172a]">
       <div className="max-w-4xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

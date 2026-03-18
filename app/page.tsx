@@ -8,11 +8,15 @@ import Education from '@/components/Education'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import ChatWidget from '@/components/ChatWidget'
+import SectionIndicator from '@/components/SectionIndicator'
+import SectionPrelude from '@/components/SectionPrelude'
 
 export default function Home() {
   return (
-    <main className="bg-stone-50 dark:bg-[#0c0a09] min-h-screen">
+    <main className="bg-stone-50 dark:bg-[#0f172a] min-h-screen">
       <Navbar />
+      <SectionIndicator />
+      <SectionPrelude />
       <Hero />
       <About />
       <Skills />
