@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { Github, Linkedin, Mail, ChevronDown, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 const ROLES = [
   'AI/ML Engineer',
@@ -153,6 +154,26 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stone-50 dark:from-[#0c0a09] to-transparent" />
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-16">
+        {/* Profile photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.6, ease: 'easeOut' }}
+          className="flex justify-center mb-6"
+        >
+          <div className="relative w-28 h-28 rounded-full ring-4 ring-amber-400/40 dark:ring-amber-500/30 ring-offset-4 ring-offset-stone-50 dark:ring-offset-[#0c0a09] overflow-hidden bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+            <span className="text-white font-bold text-2xl select-none">SS</span>
+            <Image
+              src="/profile.jpg"
+              alt="Sruthi Satyavarapu"
+              fill
+              className="object-cover"
+              priority
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+        </motion.div>
+
         {/* Available badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
