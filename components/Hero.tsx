@@ -159,7 +159,7 @@ export default function Hero() {
       </div>
 
       {/* Left — text content */}
-      <div className="relative z-10 flex flex-col justify-center w-full lg:w-[65%] pl-20 pr-8 sm:pl-28 sm:pr-12 lg:pl-40 lg:pr-16 xl:pl-52 xl:pr-20 pt-20 pb-24">
+      <div className="relative z-10 flex flex-col justify-center items-center lg:items-start text-center lg:text-left w-full lg:w-[65%] px-6 sm:px-10 lg:pl-40 lg:pr-16 xl:pl-52 xl:pr-20 pt-20 pb-24">
 
         {/* Mobile photo — shown only below lg */}
         <div className="lg:hidden flex justify-center mb-8">
@@ -215,7 +215,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-stone-500 dark:text-stone-500 max-w-lg mb-8 text-sm sm:text-base leading-relaxed"
+          className="text-stone-500 dark:text-stone-500 max-w-lg mx-auto lg:mx-0 mb-8 text-sm sm:text-base leading-relaxed"
         >
           Masters student with 6+ years of industry experience. Building intelligent AI systems
           — from modular RAG architectures to wearable health monitoring.
@@ -225,7 +225,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="flex flex-wrap items-center gap-3 mb-8"
+          className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
         >
           <a href="#projects" className="btn-primary !py-2 !px-5 !text-sm">View Projects</a>
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-outline !py-2 !px-5 !text-sm">Resume</a>
@@ -236,7 +236,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.85 }}
-          className="flex items-center gap-3"
+          className="flex items-center justify-center lg:justify-start gap-3"
         >
           {[
             { icon: Github, href: 'https://github.com/sruthisDev', label: 'GitHub' },
