@@ -145,7 +145,7 @@ export default function Experience() {
                 />
 
                 <div className="card-base p-6 hover:border-amber-500/25 dark:hover:border-amber-500/20 hover:shadow-lg">
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-3 mb-3">
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
                         {exp.type === 'research' ? (
@@ -166,7 +166,7 @@ export default function Experience() {
                         </p>
                       )}
                     </div>
-                    <div className="text-right flex-shrink-0">
+                    <div className="sm:text-right flex-shrink-0">
                       <p className="text-sm font-medium text-stone-600 dark:text-stone-400">
                         {exp.period}
                       </p>

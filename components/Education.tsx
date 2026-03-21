@@ -71,56 +71,53 @@ export default function Education() {
                   : 'hover:border-amber-400/20 dark:hover:border-amber-500/15'
               }`}
             >
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="flex gap-4">
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${
+              <div className="flex gap-4">
+                <div
+                  className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                    edu.current
+                      ? 'bg-amber-100 dark:bg-amber-500/10'
+                      : 'bg-stone-100 dark:bg-stone-800'
+                  }`}
+                >
+                  <GraduationCap
+                    className={
                       edu.current
-                        ? 'bg-amber-100 dark:bg-amber-500/10'
-                        : 'bg-stone-100 dark:bg-stone-800'
-                    }`}
-                  >
-                    <GraduationCap
-                      className={
-                        edu.current
-                          ? 'text-amber-600 dark:text-amber-400'
-                          : 'text-stone-500 dark:text-stone-400'
-                      }
-                      size={22}
-                    />
-                  </div>
-
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <h3 className="font-bold text-stone-900 dark:text-stone-100 text-lg leading-snug">
-                        {edu.degree}
-                      </h3>
-                      {edu.current && (
-                        <span className="px-2 py-0.5 text-xs rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 font-medium">
-                          Current
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-amber-600 dark:text-amber-400 font-semibold">
-                      {edu.institution}
-                    </p>
-                    <p className="text-stone-400 dark:text-stone-500 text-sm mt-0.5">
-                      {edu.location} · {edu.period}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {edu.courses.map((c) => (
-                        <span key={c} className="tag-amber">
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                        ? 'text-amber-600 dark:text-amber-400'
+                        : 'text-stone-500 dark:text-stone-400'
+                    }
+                    size={22}
+                  />
                 </div>
 
-                <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 flex-shrink-0">
-                  <Star size={13} className="fill-current" />
-                  <span className="text-sm font-bold">GPA {edu.gpa}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <h3 className="font-bold text-stone-900 dark:text-stone-100 text-lg leading-snug">
+                      {edu.degree}
+                    </h3>
+                    {edu.current && (
+                      <span className="px-2 py-0.5 text-xs rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 font-medium">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-amber-600 dark:text-amber-400 font-semibold">
+                    {edu.institution}
+                  </p>
+                  <p className="text-stone-400 dark:text-stone-500 text-sm mt-0.5">
+                    {edu.location} · {edu.period}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-2 mt-3">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400">
+                      <Star size={13} className="fill-current" />
+                      <span className="text-sm font-bold">GPA {edu.gpa}</span>
+                    </div>
+                    {edu.courses.map((c) => (
+                      <span key={c} className="tag-amber">
+                        {c}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

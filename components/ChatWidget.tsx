@@ -153,7 +153,7 @@ export default function ChatWidget() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-            className="w-[350px] sm:w-[380px] h-[520px] bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-2xl shadow-2xl shadow-black/20 flex flex-col overflow-hidden"
+            className="w-[calc(100vw-48px)] sm:w-[380px] h-[520px] bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-2xl shadow-2xl shadow-black/20 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="px-4 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-between flex-shrink-0">

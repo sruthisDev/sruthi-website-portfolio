@@ -60,7 +60,7 @@ export default function SectionPrelude() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 sm:bottom-8 left-0 right-0 flex justify-center z-40 pointer-events-none"
+          className="fixed bottom-6 sm:bottom-8 left-0 right-0 hidden sm:flex justify-center z-40 pointer-events-none"
         >
           <div className="flex items-center gap-3 group pointer-events-auto cursor-pointer">
             <motion.div
