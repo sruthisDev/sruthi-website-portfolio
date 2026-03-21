@@ -1,4 +1,3 @@
-import { GoogleGenerativeAI } from '@google/generative-ai'
 import { NextRequest, NextResponse } from 'next/server'
 
 const RESUME_CONTEXT = `
@@ -85,15 +84,19 @@ WORK EXPERIENCE:
 
 PROJECTS:
 
-1. AI Companion for Senior Citizens [Ongoing]
-   - AI-driven elderly care platform: medical data extraction, patient management, multimodal input
-   Technologies: AWS Bedrock, MongoDB, FastAPI, React, Python
+FEATURED PROJECTS (always lead with these when asked about top, best, star, main, biggest, primary, flagship, key, notable, most impressive, research, or most important projects — any variation of these):
 
-2. Modular RAG Chatbot Architecture [Ongoing / Research]
-   - Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign
+1. ⭐ Modular RAG Chatbot Architecture [Ongoing / Research] — STAR PROJECT / MAIN PROJECT / BIGGEST RESEARCH CONTRIBUTION
+   - Her most technically impressive work. Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign
    - Built end-to-end prototype: ReactJS frontend, FastAPI orchestration backend, ChromaDB vector store with hybrid retrieval, reranking, and query expansion
    - Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability
    Technologies: Python, ChromaDB, HuggingFace, Ollama, FastAPI, ReactJS
+
+2. ⭐ AI Companion for Senior Citizens [Ongoing] — STAR PROJECT / MAIN PROJECT
+   - AI-driven elderly care platform: medical data extraction, patient management, multimodal input. Built for AWS Hackathon.
+   Technologies: AWS Bedrock, MongoDB, FastAPI, React, Python
+
+OTHER PROJECTS:
 
 3. Strawberry Fruit Ripeness Classifier [Ongoing]
    - Supervised ML model to classify ripeness stages; authored white paper
@@ -105,10 +108,10 @@ PROJECTS:
 
 5. Weather & Music Trends Analysis [Completed]
    - Analyzed 6 months of daily top chart data across 106 cities to study weather-music correlations
-   - Key insight: sunny weather is associated with listener preference for high-BPM tracks, suggesting mood-driven music consumption patterns
+   - Key insight: sunny weather is associated with listener preference for high-BPM tracks
    Technologies: Python, Matplotlib, Seaborn, Tableau
 
-6. Desert Survival Game [Completed]
+6. Desert Survival Game [Completed] — minor fun project, not an AI/ML project
    - Grid-based survival game with resource collection and crafting
    Technologies: C++
 
@@ -133,7 +136,8 @@ async function callOpenAICompatible(
   baseUrl: string,
   apiKey: string,
   model: string,
-  messages: ChatMessage[]
+  messages: ChatMessage[],
+  extraHeaders: Record<string, string> = {}
 ): Promise<string> {
   const body = {
     model,
@@ -148,11 +152,14 @@ async function callOpenAICompatible(
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${apiKey}`,
+      ...extraHeaders,
     },
     body: JSON.stringify(body),
   })
 
   if (!res.ok) {
+    const body = await res.text()
+    console.error('Provider error body:', body)
     const error = Object.assign(new Error('Provider error'), { status: res.status })
     throw error
   }
@@ -161,27 +168,6 @@ async function callOpenAICompatible(
   return data.choices[0].message.content
 }
 
-async function callGemini(apiKey: string, messages: ChatMessage[]): Promise<string> {
-  const genAI = new GoogleGenerativeAI(apiKey)
-  const model = genAI.getGenerativeModel({
-    model: 'gemini-2.0-flash-lite',
-    systemInstruction: RESUME_CONTEXT,
-  })
-
-  const prior = messages.slice(0, -1)
-  const firstUserIdx = prior.findIndex((m) => m.role === 'user')
-  const trimmed = firstUserIdx === -1 ? [] : prior.slice(firstUserIdx)
-
-  const history = trimmed.map((m) => ({
-    role: m.role === 'user' ? 'user' : ('model' as const),
-    parts: [{ text: m.content }],
-  }))
-
-  const chat = model.startChat({ history })
-  const lastMessage = messages[messages.length - 1]
-  const result = await chat.sendMessage(lastMessage.content)
-  return result.response.text()
-}
 
 const INJECTION_PATTERNS = [
   /forget (all |your |previous |the )?(instructions|rules|prompt|context)/i,
@@ -217,32 +203,18 @@ export async function POST(req: NextRequest) {
 
     let text: string | null = null
 
-    // 1. Try Groq
-    if (!text && process.env.GROQ_API_KEY) {
-      try {
-        text = await callOpenAICompatible('https://api.groq.com/openai/v1', process.env.GROQ_API_KEY, 'llama-3.3-70b-versatile', messages)
-      } catch {
-        console.warn('Groq failed, falling back to Gemini')
-      }
-    }
-
-    // 2. Try Gemini
-    if (!text && process.env.GEMINI_API_KEY) {
-      try {
-        text = await callGemini(process.env.GEMINI_API_KEY, messages)
-      } catch {
-        console.warn('Gemini failed, falling back to OpenRouter')
-      }
-    }
-
-    // 3. Try OpenRouter
+    // 1. Try OpenRouter
     if (!text && process.env.OPENROUTER_API_KEY) {
       try {
-        text = await callOpenAICompatible('https://openrouter.ai/api/v1', process.env.OPENROUTER_API_KEY, 'meta-llama/llama-3.3-70b-instruct:free', messages)
-      } catch {
-        console.warn('OpenRouter failed')
+        text = await callOpenAICompatible('https://openrouter.ai/api/v1', process.env.OPENROUTER_API_KEY, 'openrouter/auto', messages, {
+          'HTTP-Referer': 'https://sruthirao.com',
+          'X-Title': "Sruthi's Portfolio",
+        })
+      } catch (e) {
+        console.warn('OpenRouter failed:', e)
       }
     }
+
 
     if (!text) {
       return NextResponse.json({ error: 'Failed to get response' }, { status: 500 })
