@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Mail, MapPin, Phone, Linkedin, Send, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, Linkedin, Send, CheckCircle, FileText } from 'lucide-react'
 
 function GitHubIcon({ size = 15 }: { size?: number }) {
   return (
@@ -124,7 +124,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               {[
                 { icon: GitHubIcon, href: 'https://github.com/sruthisDev', label: 'GitHub' },
                 {
@@ -146,6 +146,17 @@ export default function Contact() {
                   {label}
                 </motion.a>
               ))}
+              <motion.a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white shadow-md shadow-amber-500/25 transition-all text-sm font-medium"
+              >
+                <FileText size={15} />
+                Resume
+              </motion.a>
             </div>
           </motion.div>
 

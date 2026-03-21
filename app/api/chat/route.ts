@@ -215,21 +215,37 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    const provider = (process.env.AI_PROVIDER ?? 'gemini').toLowerCase()
-    let text: string
+    let text: string | null = null
 
-    if (provider === 'groq') {
-      const apiKey = process.env.GROQ_API_KEY
-      if (!apiKey) return NextResponse.json({ error: 'GROQ_API_KEY not configured' }, { status: 500 })
-      text = await callOpenAICompatible('https://api.groq.com/openai/v1', apiKey, 'llama-3.3-70b-versatile', messages)
-    } else if (provider === 'openrouter') {
-      const apiKey = process.env.OPENROUTER_API_KEY
-      if (!apiKey) return NextResponse.json({ error: 'OPENROUTER_API_KEY not configured' }, { status: 500 })
-      text = await callOpenAICompatible('https://openrouter.ai/api/v1', apiKey, 'meta-llama/llama-3.3-70b-instruct:free', messages)
-    } else {
-      const apiKey = process.env.GEMINI_API_KEY
-      if (!apiKey) return NextResponse.json({ error: 'GEMINI_API_KEY not configured' }, { status: 500 })
-      text = await callGemini(apiKey, messages)
+    // 1. Try Groq
+    if (!text && process.env.GROQ_API_KEY) {
+      try {
+        text = await callOpenAICompatible('https://api.groq.com/openai/v1', process.env.GROQ_API_KEY, 'llama-3.3-70b-versatile', messages)
+      } catch {
+        console.warn('Groq failed, falling back to Gemini')
+      }
+    }
+
+    // 2. Try Gemini
+    if (!text && process.env.GEMINI_API_KEY) {
+      try {
+        text = await callGemini(process.env.GEMINI_API_KEY, messages)
+      } catch {
+        console.warn('Gemini failed, falling back to OpenRouter')
+      }
+    }
+
+    // 3. Try OpenRouter
+    if (!text && process.env.OPENROUTER_API_KEY) {
+      try {
+        text = await callOpenAICompatible('https://openrouter.ai/api/v1', process.env.OPENROUTER_API_KEY, 'meta-llama/llama-3.3-70b-instruct:free', messages)
+      } catch {
+        console.warn('OpenRouter failed')
+      }
+    }
+
+    if (!text) {
+      return NextResponse.json({ error: 'Failed to get response' }, { status: 500 })
     }
 
     return NextResponse.json({ message: text })

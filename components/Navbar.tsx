@@ -104,12 +104,12 @@ export default function Navbar() {
                 {theme === 'dark' ? (
                   <>
                     <Sun size={13} className="text-amber-400" />
-                    <span className="hidden sm:inline">Light mode</span>
+                    <span>Light mode</span>
                   </>
                 ) : (
                   <>
                     <Moon size={13} className="text-stone-500" />
-                    <span className="hidden sm:inline">Dark mode</span>
+                    <span>Dark mode</span>
                   </>
                 )}
               </button>
