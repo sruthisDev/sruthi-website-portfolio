@@ -87,10 +87,12 @@ function TypingIndicator() {
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false)
+  const openRef = useRef(false)
   const [messages, setMessages] = useState<Message[]>([GREETING])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [showSuggested, setShowSuggested] = useState(true)
+  const [unread, setUnread] = useState(0)
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -126,6 +128,7 @@ export default function ChatWidget() {
           ? data.message
           : data.message || 'Sorry, I had trouble with that. Please try again.'
       setMessages((prev) => [...prev, { role: 'assistant', content }])
+      if (!openRef.current) setUnread((n) => n + 1)
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -275,7 +278,7 @@ export default function ChatWidget() {
       <motion.button
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.93 }}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => { setOpen((v) => { openRef.current = !v; return !v }); setUnread(0) }}
         className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg shadow-amber-500/30 flex items-center justify-center text-white relative"
         aria-label="Open AI chat"
       >
@@ -294,6 +297,17 @@ export default function ChatWidget() {
         {/* Pulse ring */}
         {!open && (
           <span className="absolute inset-0 rounded-full bg-amber-400 animate-ping opacity-20" />
+        )}
+
+        {/* Unread badge */}
+        {!open && unread > 0 && (
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center shadow-md"
+          >
+            {unread}
+          </motion.span>
         )}
       </motion.button>
     </div>
