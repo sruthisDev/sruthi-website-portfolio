@@ -55,9 +55,17 @@ function formatInline(text: string): React.ReactNode {
 const SUGGESTED = [
   'What are her AI/ML skills?',
   'Tell me about her research',
-  'What companies has she worked at?',
   'Is she open to opportunities?',
 ]
+
+const CANNED: Record<string, string> = {
+  'What are her AI/ML skills?':
+    "Sruthi builds production-ready AI systems end-to-end. Her core work is a **modular RAG pipeline** — she's handled everything from data preprocessing and chunking strategies to hybrid retrieval, reranking, and swapping LLM backends without redesigning the system. She uses HuggingFace for embeddings, ChromaDB and Pinecone for vector storage, and FastAPI for serving. What sets her apart is rigorous evaluation — controlled multi-domain experiments measuring Recall@5, MRR, faithfulness, and relevance across heterogeneous corpora. She's also applied the same engineering discipline to a wearable health project, doing time-series feature extraction and sensor fusion for real-time fall detection.",
+  'Tell me about her research':
+    "Sruthi's current research at University of the Pacific focuses on **domain-adaptive modular RAG architectures** — specifically, how well a RAG system can adapt across heterogeneous domains without architectural redesign. She's running controlled evaluations measuring Recall@5, MRR, faithfulness, and relevance across multiple corpora to validate true domain adaptability. Previously she worked on a proprietary wearable device, building ML pipelines for **fall detection and sleep monitoring** using accelerometer, gyroscope, and PPG data — handling signal preprocessing, time-series feature extraction, and sensor fusion for real-time edge inference.",
+  'Is she open to opportunities?':
+    "Absolutely! Sruthi is actively seeking roles in **AI/ML engineering**, **software engineering**, and **data science** — she brings a rare combination of 6+ years of industry experience with active AI/ML research and a 4.0 GPA Master's degree. She's graduating this **Spring 2026** and is ready to start as early as **end of May**. Reach out at sruthiraosatyavarapu@gmail.com or connect on LinkedIn at [linkedin.com/in/sruthi-satyavarapu](https://linkedin.com/in/sruthi-satyavarapu/).",
+}
 
 const GREETING: Message = {
   role: 'assistant',
@@ -113,8 +121,16 @@ export default function ChatWidget() {
     const updated = [...messages, userMsg]
     setMessages(updated)
     setInput('')
-    setLoading(true)
     setShowSuggested(false)
+
+    const canned = CANNED[text.trim()]
+    if (canned) {
+      setMessages((prev) => [...prev, { role: 'assistant', content: canned }])
+      if (!openRef.current) setUnread((n) => n + 1)
+      return
+    }
+
+    setLoading(true)
 
     try {
       const res = await fetch('/api/chat', {
