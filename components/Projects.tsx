@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Brain, BarChart3, Gamepad2, CloudRain, HeartPulse } from 'lucide-react'
+import { Brain, BarChart3, Gamepad2, CloudRain, HeartPulse, ShieldCheck } from 'lucide-react'
 
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -27,9 +27,9 @@ const projects = [
   },
   {
     title: 'Modular RAG Chatbot Architecture',
-    status: 'Research',
+    status: 'Completed',
     description:
-      'Modular, service-oriented RAG architecture with plug-and-play swapping of embedding models, vector DBs, and LLM backends. Built end-to-end with ReactJS, FastAPI, and ChromaDB with hybrid retrieval and reranking. Conducting controlled multi-domain evaluation using Recall@5, MRR, and human-assessed quality metrics.',
+      'Modular, service-oriented RAG architecture with plug-and-play swapping of embedding models, vector DBs, and LLM backends. Built end-to-end with ReactJS, FastAPI, and ChromaDB incorporating query rewriting, re-ranking, and RBAC-based access control. Integrated session-aware context management and latency instrumentation for reproducible benchmarking across domains.',
     icon: Brain,
     type: 'AI/ML',
     featured: true,
@@ -70,6 +70,17 @@ const projects = [
     github: 'https://github.com/sruthisDev/Weather-Impact-On-Music-Trends',
   },
   {
+    title: 'Secure Hospital Management System',
+    status: 'Completed',
+    description:
+      'Role-based hospital management system for patients and doctors with OAuth2 authentication and secure API design following OWASP guidelines.',
+    icon: ShieldCheck,
+    type: 'Full Stack',
+    featured: false,
+    tech: ['React', 'Node.js', 'MySQL', 'OAuth2', 'OWASP'],
+    github: 'https://github.com/sruthisDev/Secure_Hospital_Patient_Management_and_Billing_System',
+  },
+  {
     title: 'Desert Survival Game',
     status: 'Completed',
     description:
@@ -78,7 +89,7 @@ const projects = [
     type: 'Game Dev',
     featured: false,
     tech: ['C++'],
-    github: null,
+    github: 'https://github.com/sruthisDev/Deserted-Island-Survival-Game',
   },
 ]
 
@@ -93,6 +104,8 @@ const typeStyle: Record<string, string> = {
     'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-400 border-stone-200 dark:border-stone-700',
   'Game Dev':
     'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 border-stone-200 dark:border-stone-700',
+  'Full Stack':
+    'bg-orange-50 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-200 dark:border-orange-500/20',
 }
 
 const statusDot: Record<string, string> = {

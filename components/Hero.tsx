@@ -217,7 +217,7 @@ export default function Hero() {
           transition={{ delay: 0.6 }}
           className="text-stone-500 dark:text-stone-500 max-w-lg mx-auto lg:mx-0 mb-8 text-sm sm:text-base leading-relaxed"
         >
-          Masters student with 6+ years of industry experience. Building intelligent AI systems
+          Masters student with 7+ years of industry experience. Building intelligent AI systems
           — from modular RAG architectures to wearable health monitoring.
         </motion.p>
 
