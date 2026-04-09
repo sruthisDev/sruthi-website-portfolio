@@ -44,12 +44,15 @@ function renderMarkdown(text: string) {
 }
 
 function formatInline(text: string): React.ReactNode {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g)
-  return parts.map((part, i) =>
-    part.startsWith('**') && part.endsWith('**')
-      ? <strong key={i}>{part.slice(2, -2)}</strong>
-      : part
-  )
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g)
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**'))
+      return <strong key={i}>{part.slice(2, -2)}</strong>
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+    if (linkMatch)
+      return <a key={i} href={linkMatch[2]} target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 underline">{linkMatch[1]}</a>
+    return part
+  })
 }
 
 const SUGGESTED = [
@@ -60,11 +63,11 @@ const SUGGESTED = [
 
 const CANNED: Record<string, string> = {
   'What are her AI/ML skills?':
-    "Sruthi builds production-ready AI systems end-to-end. Her core work is a **modular RAG pipeline** — she's handled everything from data preprocessing and chunking strategies to hybrid retrieval, reranking, and swapping LLM backends without redesigning the system. She uses HuggingFace for embeddings, ChromaDB and Pinecone for vector storage, and FastAPI for serving. What sets her apart is rigorous evaluation — controlled multi-domain experiments measuring Recall@5, MRR, faithfulness, and relevance across heterogeneous corpora. She's also applied the same engineering discipline to a wearable health project, doing time-series feature extraction and sensor fusion for real-time fall detection.",
+    "Sruthi builds production-ready AI systems end-to-end — from data preprocessing and chunking strategies to hybrid retrieval, reranking, and swapping LLM backends without redesigning the system.\n\nHer core work is a **modular RAG pipeline** using HuggingFace for embeddings, ChromaDB for vector storage, and FastAPI for serving. She's also engineered system-level capabilities on top — **session-aware context management** for multi-turn interactions and **latency instrumentation** for reproducible performance benchmarking.\n\nWhat sets her apart is rigorous evaluation across heterogeneous domains, and the same engineering discipline applied to a wearable health project — time-series feature extraction and sensor fusion for real-time fall detection.",
   'Tell me about her research':
-    "Sruthi's current research at University of the Pacific focuses on **domain-adaptive modular RAG architectures** — specifically, how well a RAG system can adapt across heterogeneous domains without architectural redesign. She's running controlled evaluations measuring Recall@5, MRR, faithfulness, and relevance across multiple corpora to validate true domain adaptability. Previously she worked on a proprietary wearable device, building ML pipelines for **fall detection and sleep monitoring** using accelerometer, gyroscope, and PPG data — handling signal preprocessing, time-series feature extraction, and sensor fusion for real-time edge inference.",
+    "Sruthi's research at University of the Pacific focuses on **domain-adaptive modular RAG architectures** — how well a RAG system adapts across heterogeneous domains without architectural redesign.\n\nBeyond retrieval, she's built the full system: **session-aware context management** for multi-user environments, **latency instrumentation** for cross-domain benchmarking, and RBAC-based access control. The work bridges the gap between academic benchmarking frameworks and production deployment.\n\nShe also worked on a proprietary wearable device — building ML pipelines for **fall detection and sleep monitoring** using accelerometer, gyroscope, and PPG data. Her paper is currently **under review at IEEE BigData Service**.",
   'Is she open to opportunities?':
-    "Absolutely! Sruthi is actively seeking roles in **AI/ML engineering**, **software engineering**, and **data science** — she brings a rare combination of 6+ years of industry experience with active AI/ML research and a 4.0 GPA Master's degree. She's graduating this **Spring 2026** and is ready to start as early as **end of May**. Reach out at sruthiraosatyavarapu@gmail.com or connect on LinkedIn at [linkedin.com/in/sruthi-satyavarapu](https://linkedin.com/in/sruthi-satyavarapu/).",
+    "Absolutely! Sruthi is actively seeking roles in **AI/ML engineering**, **software engineering**, and **data science**.\n\nShe brings a rare combination of **7+ years of industry experience** — across healthcare, finance, and e-commerce — with active AI/ML research and a **4.0 GPA Master's degree**.\n\nShe's graduating **Spring 2026** and is ready to start as early as **end of May**. Reach out at sruthiraosatyavarapu@gmail.com or [connect on LinkedIn](https://linkedin.com/in/sruthi-satyavarapu/).",
 }
 
 const GREETING: Message = {

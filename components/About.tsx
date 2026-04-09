@@ -29,7 +29,7 @@ function CountUp({ to, duration = 2 }: { to: number; duration?: number }) {
 }
 
 const stats = [
-  { icon: Briefcase, value: 6, suffix: '+', label: 'Years Experience' },
+  { icon: Briefcase, value: 7, suffix: '+', label: 'Years Experience' },
   { icon: Brain, value: 5, suffix: '+', label: 'AI/ML Projects' },
   { icon: GraduationCap, value: 3, suffix: '', label: 'Degrees Earned' },
   { icon: Star, value: 4, suffix: '.0', label: 'GPA' },
@@ -75,7 +75,7 @@ export default function About() {
               <strong className="text-amber-600 dark:text-amber-400 font-semibold">
                 Masters student in Computer Science
               </strong>{' '}
-              at the University of the Pacific, bringing over 6 years of industry experience
+              at the University of the Pacific, bringing over 7 years of industry experience
               in software development to the world of AI/ML.
             </p>
             <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
@@ -90,9 +90,13 @@ export default function About() {
             <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
               Currently researching{' '}
               <strong className="text-amber-600 dark:text-amber-400 font-semibold">
-                modular conversational AI architectures
+                modular RAG systems
               </strong>{' '}
-              — building systems that are technically rigorous and practically impactful.
+              that bridge the gap between academic benchmarking and production deployment — combining retrieval accuracy with system-level engineering. Paper under review at{' '}
+              <strong className="text-amber-600 dark:text-amber-400 font-semibold">
+                IEEE BigData Service
+              </strong>
+              .
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">

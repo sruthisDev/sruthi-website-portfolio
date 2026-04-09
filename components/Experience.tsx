@@ -10,12 +10,13 @@ const experiences = [
     title: 'Research Assistant',
     company: 'University of the Pacific',
     location: 'Stockton, CA',
-    period: 'June 2025 – Present',
-    project: 'Domain-Adaptive Modular Conversational AI Architecture',
+    period: 'March 2025 – Present',
+    project: 'A Modular Architecture for Domain-Adaptive Retrieval-Augmented Generation Systems',
     bullets: [
-      'Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign.',
-      'Built end-to-end prototype with ReactJS frontend, FastAPI orchestration backend, and ChromaDB vector store with hybrid retrieval, reranking, and query expansion.',
-      'Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability.',
+      'Designed and implemented a modular RAG architecture addressing the gap between benchmarking frameworks like FlashRAG and deployment frameworks (LangChain, LlamaIndex), enabling configuration-driven experimentation without architectural changes.',
+      'Built end-to-end system using ReactJS, FastAPI, and ChromaDB incorporating query rewriting, re-ranking, session-aware interaction, and RBAC-based access control for multi-user environments. Integrated persistent storage and latency benchmarking infrastructure for reproducible cross-domain RAG evaluation.',
+      'Evaluated retrieval performance across biomedical and Sanskrit philosophical corpora using Recall@K, MRR, and RAGAS, demonstrating high domain sensitivity to component selection.',
+      'Paper under review — IEEE BigData Service: "A Modular Architecture for Domain-Adaptive Retrieval-Augmented Generation Systems"',
     ],
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
   },
@@ -35,17 +36,29 @@ const experiences = [
   },
   {
     type: 'industry',
-    title: 'PHP Developer',
+    title: 'AI/ML Intern',
+    company: 'PNC, USA',
+    location: 'USA',
+    period: 'Jan 2024 – July 2024',
+    bullets: [
+      'Built end-to-end ML pipelines using AWS SageMaker and Airflow for financial risk systems, improving processing efficiency by 30%.',
+      'Developed NLP-based fraud detection models leveraging LLMs and ensemble ML techniques, reducing detection latency by 15% and improving real-time risk scoring accuracy.',
+      'Designed and deployed scalable ML services via Java Spring Boot microservices, Docker, and Kubernetes across cloud environments, ensuring high availability and seamless enterprise integration.',
+    ],
+    tech: ['AWS SageMaker', 'Airflow', 'Python', 'LLMs', 'Spring Boot', 'Docker', 'Kubernetes'],
+  },
+  {
+    type: 'industry',
+    title: 'Software Developer',
     company: 'Tata Consultancy Services (TCS)',
     location: 'Hyderabad, India',
-    period: 'July 2021 – March 2023',
+    period: 'July 2021 – April 2023',
     bullets: [
-      'Developed and managed critical B2B applications for the MARS PetCare portfolio, ensuring high availability and performance.',
-      'Improved server-side performance by 20% through optimization and feature enhancements.',
-      'Strengthened application security via OWASP Top 10 mitigations, reducing vulnerabilities by 35%.',
-      'Served as mentor and onboarding lead for new team members, providing hands-on technical training.',
+      'Developed and deployed ML models for predictive analytics on the Mars Petcare platform, improving forecasting accuracy by 25%.',
+      'Implemented secure backend systems following OWASP guidelines for enterprise applications, improving performance by 20% and reducing vulnerabilities by 35%.',
+      'Deployed and maintained scalable cloud solutions on AWS (EC2, S3, Lambda) supporting high availability.',
     ],
-    tech: ['PHP', 'MySQL', 'JavaScript', 'EzPublish'],
+    tech: ['Python', 'ML Models', 'AWS', 'PHP', 'MySQL', 'OWASP'],
   },
   {
     type: 'industry',
@@ -117,7 +130,7 @@ export default function Experience() {
             </span>
           </h2>
           <p className="text-stone-500 dark:text-stone-400 mt-2">
-            6+ years across research and industry
+            7+ years across research and industry
           </p>
           <div className="section-divider" />
         </motion.div>
