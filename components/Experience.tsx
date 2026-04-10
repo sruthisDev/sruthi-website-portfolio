@@ -27,11 +27,11 @@ const experiences = [
     period: 'June 2025 – Dec 2025',
     project: 'Position & Sleep Tracking via Wearable Sensor Data',
     bullets: [
-      'Worked on a proprietary wearable device to improve fall detection and sleep monitoring using multi-sensor data (accelerometer, gyroscope, PPG).',
-      'Enhanced model performance through signal preprocessing, time-series feature extraction, and sensor fusion techniques.',
-      'Improved activity classification accuracy via optimized ML pipelines, contributing to more reliable real-time inference on edge data.',
+      'Developed ML models using PyTorch and Scikit-learn to analyze wearable sensor data streams for IoT-based health monitoring, improving anomaly detection accuracy by 28%.',
+      'Engineered time-series feature extraction pipelines for environmental and motion-based datasets, enhancing predictive model performance across multiple sensor modalities.',
+      'Built Flask-based RESTful services integrated with React dashboards to deliver real-time sensor insights and model outputs to end users.',
     ],
-    tech: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib'],
+    tech: ['Python', 'PyTorch', 'Scikit-learn', 'Flask', 'React', 'Pandas', 'NumPy'],
   },
   {
     type: 'industry',
