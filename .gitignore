@@ -30,5 +30,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+<<<<<<< HEAD
 
 .vscode
+=======
+.vscode/
+>>>>>>> 1e45042d986ea4cd7bd4adaa1b8ced2719170053
