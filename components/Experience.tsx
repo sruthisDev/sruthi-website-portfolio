@@ -16,7 +16,7 @@ const experiences = [
       'Designed and implemented a modular RAG architecture addressing the gap between benchmarking frameworks like FlashRAG and deployment frameworks (LangChain, LlamaIndex), enabling configuration-driven experimentation without architectural changes.',
       'Built end-to-end system using ReactJS, FastAPI, and ChromaDB incorporating query rewriting, re-ranking, session-aware interaction, and RBAC-based access control for multi-user environments. Integrated persistent storage and latency benchmarking infrastructure for reproducible cross-domain RAG evaluation.',
       'Evaluated retrieval performance across biomedical and Sanskrit philosophical corpora using Recall@K, MRR, and RAGAS, demonstrating high domain sensitivity to component selection.',
-      'Paper under review — IEEE BigData Service: "A Modular Architecture for Domain-Adaptive Retrieval-Augmented Generation Systems"',
+      'Paper published at IEEE BigDataService 2026 (Fukuoka, Japan): "A Modular Architecture for Domain-Adaptive Retrieval-Augmented Generation Systems"',
     ],
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
   },
@@ -42,10 +42,10 @@ const experiences = [
     period: 'Jan 2024 – July 2024',
     bullets: [
       'Built end-to-end ML pipelines using AWS SageMaker and Airflow for financial risk systems, improving processing efficiency by 30%.',
-      'Developed NLP-based fraud detection models leveraging LLMs and ensemble ML techniques, reducing detection latency by 15% and improving real-time risk scoring accuracy.',
+      'Built an ensemble fraud detection system combining XGBoost on structured transaction data with a fine-tuned LLM on unstructured transaction text into a unified fraud score, reducing detection latency by 15%.',
       'Designed and deployed scalable ML services via Java Spring Boot microservices, Docker, and Kubernetes across cloud environments, ensuring high availability and seamless enterprise integration.',
     ],
-    tech: ['AWS SageMaker', 'Airflow', 'Python', 'LLMs', 'Spring Boot', 'Docker', 'Kubernetes'],
+    tech: ['AWS SageMaker', 'Airflow', 'Python', 'XGBoost', 'LLMs', 'Spring Boot', 'Docker', 'Kubernetes'],
   },
   {
     type: 'industry',

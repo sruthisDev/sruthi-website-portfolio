@@ -9,9 +9,9 @@ const education = [
     degree: 'Master of Science in Computer Science',
     institution: 'University of the Pacific',
     location: 'Stockton, CA',
-    period: 'Aug 2024 – Present',
+    period: 'Aug 2024 – June 2026',
     gpa: '4.0',
-    current: true,
+    current: false,
     courses: ['Machine Learning', 'Data Science', 'Storytelling & Visualization'],
   },
   {

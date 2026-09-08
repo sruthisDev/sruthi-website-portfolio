@@ -65,9 +65,9 @@ const CANNED: Record<string, string> = {
   'What are her AI/ML skills?':
     "Sruthi builds production-ready AI systems end-to-end — from data preprocessing and chunking strategies to hybrid retrieval, reranking, and swapping LLM backends without redesigning the system.\n\nHer core work is a **modular RAG pipeline** using HuggingFace for embeddings, ChromaDB for vector storage, and FastAPI for serving. She's also engineered system-level capabilities on top — **session-aware context management** for multi-turn interactions and **latency instrumentation** for reproducible performance benchmarking.\n\nWhat sets her apart is rigorous evaluation across heterogeneous domains, and the same engineering discipline applied to a wearable health project — time-series feature extraction and sensor fusion for real-time fall detection.",
   'Tell me about her research':
-    "Sruthi's research at University of the Pacific focuses on **domain-adaptive modular RAG architectures** — how well a RAG system adapts across heterogeneous domains without architectural redesign.\n\nBeyond retrieval, she's built the full system: **session-aware context management** for multi-user environments, **latency instrumentation** for cross-domain benchmarking, and RBAC-based access control. The work bridges the gap between academic benchmarking frameworks and production deployment.\n\nShe also worked on a proprietary wearable device — building ML pipelines for **fall detection and sleep monitoring** using accelerometer, gyroscope, and PPG data. Her paper is currently **under review at IEEE BigData Service**.",
+    "Sruthi's research at University of the Pacific focuses on **domain-adaptive modular RAG architectures** — how well a RAG system adapts across heterogeneous domains without architectural redesign.\n\nBeyond retrieval, she's built the full system: **session-aware context management** for multi-user environments, **latency instrumentation** for cross-domain benchmarking, and RBAC-based access control. The work bridges the gap between academic benchmarking frameworks and production deployment.\n\nShe also worked on a proprietary wearable device — building ML pipelines for **fall detection and sleep monitoring** using accelerometer, gyroscope, and PPG data. Her paper, **[\"A Modular Architecture for Domain Adaptive Retrieval Augmented Generation Systems\"](https://doi.org/10.1109/BigDataService70481.2026.00047)**, was published at **IEEE BigDataService 2026** in Fukuoka, Japan.",
   'Is she open to opportunities?':
-    "Absolutely! Sruthi is actively seeking roles in **AI/ML engineering**, **software engineering**, and **data science**.\n\nShe brings a rare combination of **7+ years of industry experience** — across healthcare, finance, and e-commerce — with active AI/ML research and a **4.0 GPA Master's degree**.\n\nShe's graduating **Spring 2026** and is ready to start as early as **end of May**. Reach out at sruthiraosatyavarapu@gmail.com or [connect on LinkedIn](https://linkedin.com/in/sruthi-satyavarapu/).",
+    "Absolutely! Sruthi is actively seeking roles in **AI/ML engineering**, **software engineering**, and **data science**.\n\nShe brings a rare combination of **7+ years of industry experience** — across healthcare, finance, and e-commerce — with active AI/ML research and a **4.0 GPA Master's degree**.\n\nShe **graduated in June 2026** and is available to start immediately. Reach out at sruthiraosatyavarapu@gmail.com or [connect on LinkedIn](https://linkedin.com/in/sruthi-satyavarapu/).",
 }
 
 const GREETING: Message = {
@@ -286,7 +286,7 @@ export default function ChatWidget() {
                 </motion.button>
               </div>
               <p className="text-center text-[10px] text-stone-400 dark:text-stone-600 mt-1.5">
-                Powered by Gemini · Resume-based AI
+                Powered by OpenRouter · Resume-based AI
               </p>
             </div>
           </motion.div>
