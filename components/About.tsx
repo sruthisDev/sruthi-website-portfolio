@@ -29,8 +29,8 @@ function CountUp({ to, duration = 2 }: { to: number; duration?: number }) {
 }
 
 const stats = [
-  { icon: Briefcase, value: 7, suffix: '+', label: 'Years Experience' },
-  { icon: Brain, value: 5, suffix: '+', label: 'AI/ML Projects' },
+  { icon: Briefcase, value: 7, suffix: '+', label: 'Years Experience', href: '#experience' },
+  { icon: Brain, value: 5, suffix: '+', label: 'AI/ML Projects', href: '#projects' },
   { icon: GraduationCap, value: 3, suffix: '', label: 'Degrees Earned' },
   { icon: Star, value: 4, suffix: '.0', label: 'GPA' },
 ]
@@ -70,7 +70,7 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="space-y-5"
           >
-            <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-400 text-base leading-relaxed">
               I&apos;m a{' '}
               <strong className="text-amber-600 dark:text-amber-400 font-semibold">
                 Masters student in Computer Science
@@ -78,7 +78,7 @@ export default function About() {
               at the University of the Pacific, bringing over 7 years of industry experience
               in software development to the world of AI/ML.
             </p>
-            <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-400 text-base leading-relaxed">
               My journey spans from bioinformatics visualization tools and enterprise B2B
               applications to cutting-edge{' '}
               <strong className="text-amber-600 dark:text-amber-400 font-semibold">
@@ -87,17 +87,16 @@ export default function About() {
               and wearable health monitoring. I bridge the gap between research and
               production-ready AI.
             </p>
-            <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
-              Paper published at IEEE BigDataService 2026 (Fukuoka, Japan):{' '}
-              
+            <p className="text-stone-600 dark:text-stone-400 text-base leading-relaxed">
+              Published at IEEE BigDataService 2026 (Fukuoka, Japan):{' '}
+              <a
                 href="https://doi.org/10.1109/BigDataService70481.2026.00047"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-600 dark:text-amber-400 font-semibold underline hover:text-amber-700 dark:hover:text-amber-300"
               >
                 A Modular Architecture for Domain Adaptive Retrieval Augmented Generation Systems
-              </a>{' '}
-              that bridge the gap between academic benchmarking and production deployment — combining retrieval accuracy with system-level engineering.
+              </a>. This paper presents a RAG architecture that enables swapping components through configuration alone, with session management and component-level observability built in for deployability. It shows that identical configurations behave differently across domains — making it a practical tool for researchers and practitioners to find the right pipeline for their own data.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
@@ -116,24 +115,47 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.35 }}
             className="grid grid-cols-2 gap-5"
           >
-            {stats.map(({ icon: Icon, value, suffix, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.45 + i * 0.08, type: 'spring', stiffness: 200 }}
-                className="card-base p-6 text-center hover:border-amber-500/30 dark:hover:border-amber-500/25 hover:shadow-lg group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                  <Icon className="text-amber-600 dark:text-amber-400" size={22} />
-                </div>
-                <div className="text-3xl font-bold text-stone-900 dark:text-stone-100 mb-1">
-                  <CountUp to={value} />
-                  {suffix}
-                </div>
-                <div className="text-sm text-stone-500 dark:text-stone-500">{label}</div>
-              </motion.div>
-            ))}
+            {stats.map(({ icon: Icon, value, suffix, label, href }, i) => {
+              const className = `card-base p-6 text-center hover:border-amber-500/30 dark:hover:border-amber-500/25 hover:shadow-lg group${
+                href ? ' cursor-pointer' : ''
+              }`
+              const content = (
+                <>
+                  <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                    <Icon className="text-amber-600 dark:text-amber-400" size={22} />
+                  </div>
+                  <div className="text-3xl font-bold text-stone-900 dark:text-stone-100 mb-1">
+                    <CountUp to={value} />
+                    {suffix}
+                  </div>
+                  <div className="text-sm text-stone-500 dark:text-stone-500">{label}</div>
+                </>
+              )
+
+              return href ? (
+                <motion.a
+                  key={label}
+                  href={href}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.45 + i * 0.08, type: 'spring', stiffness: 200 }}
+                  whileHover={{ y: -3 }}
+                  className={className}
+                >
+                  {content}
+                </motion.a>
+              ) : (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.45 + i * 0.08, type: 'spring', stiffness: 200 }}
+                  className={className}
+                >
+                  {content}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </div>

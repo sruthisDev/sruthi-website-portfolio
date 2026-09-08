@@ -36,7 +36,7 @@ SUMMARY:
 Masters student with over 6 years of experience in software development, with growing expertise in data science, machine learning, and data visualization. Skilled in Python, with hands-on experience using Tableau and Scikit-learn. Eager to apply and expand skills in AI/ML roles focused on data-driven decision-making.
 
 EDUCATION:
-1. Master of Science in Computer Science — University of the Pacific, Stockton, CA (Aug 2024 – Present), GPA: 4.0
+1. Master of Science in Computer Science — University of the Pacific, Stockton, CA (Aug 2024 – June 2026, graduated), GPA: 4.0
    Coursework: Machine Learning, Data Science, Storytelling & Visualization
 2. Master of Science in Medical Software Technology — Manipal Institute of Technology, India (Aug 2014 – May 2016), GPA: 3.7
 3. Bachelor of Engineering in Bio Medical Engineering — JNTU, India (Aug 2010 – May 2014), GPA: 3.3
@@ -57,28 +57,34 @@ WORK EXPERIENCE:
    - Improved activity classification accuracy via optimized ML pipelines, contributing to more reliable real-time inference on edge data
    Technologies: Python, Pandas, NumPy, Scikit-learn, Matplotlib
 
-3. PHP Developer — Tata Consultancy Services (TCS), Hyderabad (July 2021 – March 2023)
+3. AI/ML Intern — PNC, USA (Jan 2024 – July 2024)
+   - Built end-to-end ML pipelines using AWS SageMaker and Airflow for financial risk systems, improving processing efficiency by 30%
+   - Built an ensemble fraud detection system combining XGBoost on structured transaction data with a fine-tuned LLM on unstructured transaction text into a unified fraud score, reducing detection latency by 15%
+   - Designed and deployed scalable ML services via Java Spring Boot microservices, Docker, and Kubernetes across cloud environments, ensuring high availability and seamless enterprise integration
+   Technologies: AWS SageMaker, Airflow, Python, XGBoost, LLMs, Spring Boot, Docker, Kubernetes
+
+4. PHP Developer — Tata Consultancy Services (TCS), Hyderabad (July 2021 – March 2023)
    - Developed critical B2B applications for MARS PetCare portfolio
    - Improved server-side performance by 20%
    - Reduced vulnerabilities by 35% via OWASP Top 10 mitigations
    - Served as mentor and onboarding lead
    Technologies: PHP, MySQL, JavaScript, EzPublish
 
-4. Web Developer — Hyper Interact Services (Feb 2020 – May 2021)
+5. Web Developer — Hyper Interact Services (Feb 2020 – May 2021)
    - Developed web apps for SEM campaigns, optimized landing pages
    Technologies: Drupal, PHP, JavaScript, MySQL
 
-5. Senior Software Engineer — Foray Software Private Limited (July 2019 – Oct 2019)
+6. Senior Software Engineer — Foray Software Private Limited (July 2019 – Oct 2019)
    - Enhanced inventory search for Mars employees: 30% faster search, 15% efficiency increase
    Technologies: Drupal, JavaScript, MySQL
 
-6. Associate Analyst — PurpleTalk (Feb 2017 – June 2019)
+7. Associate Analyst — PurpleTalk (Feb 2017 – June 2019)
    - Canya App: peer-to-peer digital services Android app
    - Cuckuu App: social networking alarm app — Best Performance Award
    - SILA: payment & invoice module for Attendance Management — Best Employee Award
    Technologies: Yii Framework, MongoDB, JavaScript, jQuery
 
-7. Research Associate / Intern — Excellera (GVK Bio) (June 2015 – Dec 2016)
+8. Research Associate / Intern — Excellera (GVK Bio) (June 2015 – Dec 2016)
    - Built automated visualization tool for biological pathway mapping — 25% workflow improvement
    Technologies: PHP, JavaScript, jQuery, Ajax, D3.js, HTML/CSS
 
@@ -89,7 +95,8 @@ FEATURED PROJECTS (always lead with these when asked about top, best, star, main
 1. ⭐ Modular RAG Chatbot Architecture [Ongoing / Research] — STAR PROJECT / MAIN PROJECT / BIGGEST RESEARCH CONTRIBUTION
    - Her most technically impressive work. Designed a modular, service-oriented RAG architecture enabling plug-and-play swapping of embedding models, vector DBs, LLM backends, and retrieval strategies without architectural redesign
    - Built end-to-end prototype: ReactJS frontend, FastAPI orchestration backend, ChromaDB vector store with hybrid retrieval, reranking, and query expansion
-   - Conducting controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability
+   - Conducted controlled multi-domain evaluation (Recall@5, MRR, faithfulness, relevance, helpfulness) across heterogeneous corpora to validate domain adaptability
+   - Paper published at IEEE BigDataService 2026 (Fukuoka, Japan): "A Modular Architecture for Domain Adaptive Retrieval Augmented Generation Systems" (DOI: 10.1109/BigDataService70481.2026.00047)
    Technologies: Python, ChromaDB, HuggingFace, Ollama, FastAPI, ReactJS
 
 2. ⭐ AI Companion for Senior Citizens [Ongoing] — STAR PROJECT / MAIN PROJECT
@@ -123,7 +130,7 @@ TECHNICAL SKILLS:
 - Tools & Platforms: Git, GitHub, AWS Bedrock, Ollama
 
 AVAILABILITY:
-Sruthi is actively seeking AI/ML engineering roles and research collaborations. She is open to internships, full-time positions, and research partnerships.
+Sruthi graduated with her Master's in June 2026 and is available to start immediately. She is actively seeking AI/ML engineering roles and research collaborations, and is open to full-time positions and research partnerships.
 `.trim()
 
 export interface ChatMessage {
