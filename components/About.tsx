@@ -88,15 +88,16 @@ export default function About() {
               production-ready AI.
             </p>
             <p className="text-stone-600 dark:text-stone-400 text-lg leading-relaxed">
-              Currently researching{' '}
-              <strong className="text-amber-600 dark:text-amber-400 font-semibold">
-                modular RAG systems
-              </strong>{' '}
-              that bridge the gap between academic benchmarking and production deployment — combining retrieval accuracy with system-level engineering. Paper under review at{' '}
-              <strong className="text-amber-600 dark:text-amber-400 font-semibold">
-                IEEE BigData Service
-              </strong>
-              .
+              Paper published at IEEE BigDataService 2026 (Fukuoka, Japan):{' '}
+              
+                href="https://doi.org/10.1109/BigDataService70481.2026.00047"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-600 dark:text-amber-400 font-semibold underline hover:text-amber-700 dark:hover:text-amber-300"
+              >
+                A Modular Architecture for Domain Adaptive Retrieval Augmented Generation Systems
+              </a>{' '}
+              that bridge the gap between academic benchmarking and production deployment — combining retrieval accuracy with system-level engineering.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
