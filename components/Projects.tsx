@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Brain, BarChart3, Gamepad2, CloudRain, HeartPulse, ShieldCheck } from 'lucide-react'
+import { Brain, BarChart3, Gamepad2, CloudRain, HeartPulse, ShieldCheck, ExternalLink, FileText, ArrowRight } from 'lucide-react'
 
 function GitHubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -46,6 +46,8 @@ const projects = [
     featured: false,
     tech: ['Python', 'Scikit-learn', 'Pandas'],
     github: 'https://github.com/sruthisDev/Strawberry_Ripeness_Classification',
+    demoUrl: 'https://strawberry.sruthirao.com/',
+    demoLabel: 'Live Demo',
   },
   {
     title: 'Adidas Sales Dashboard',
@@ -62,12 +64,14 @@ const projects = [
     title: 'Weather & Music Trends Analysis',
     status: 'Completed',
     description:
-      'Analyzed 6 months of daily top chart data across 106 cities. EDA surfaced a key insight: sunny weather is associated with listener preference for high-BPM tracks, suggesting mood-driven music consumption patterns.',
+      "Engineered an end-to-end ETL pipeline integrating daily music charts and weather data into PostgreSQL, covering 103 cities across 6 continents over 6 months. Standardized track identities using Spotify IDs and built a Dockerized, multithreaded Essentia pipeline to replace Spotify's deprecated audio-features API. Applied PCA and KMeans clustering to group cities into 4 regional listening profiles, and analyzed how BPM, energy, danceability, valence, and musical key vary across cities and weather conditions.",
     icon: CloudRain,
     type: 'Data Science',
     featured: false,
-    tech: ['Python', 'Matplotlib', 'Seaborn', 'Tableau'],
+    tech: ['Selenium', 'Pandas', 'PostgreSQL', 'Essentia', 'Docker', 'Scikit-learn', 'Plotly'],
     github: 'https://github.com/sruthisDev/Weather-Impact-On-Music-Trends',
+    demoUrl: '/weathering-the-music-charts.pdf',
+    demoLabel: 'View Report',
   },
   {
     title: 'Secure Hospital Management System',
@@ -159,9 +163,22 @@ export default function Projects() {
                   <div className="w-11 h-11 rounded-xl bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Icon className="text-amber-600 dark:text-amber-400" size={20} />
                   </div>
-                  <span className={`text-xs font-semibold ${statusDot[project.status]}`}>
-                    ● {project.status}
-                  </span>
+                  {project.demoUrl ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded-full bg-amber-500 hover:bg-amber-600 text-white transition-colors"
+                    >
+                      {project.demoUrl.endsWith('.pdf') ? <FileText size={11} /> : <ExternalLink size={11} />}
+                      {project.demoLabel}
+                    </a>
+                  ) : (
+                    <span className={`text-xs font-semibold ${statusDot[project.status]}`}>
+                      ● {project.status}
+                    </span>
+                  )}
                 </div>
 
                 <span
@@ -186,18 +203,20 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex-shrink-0 p-1.5 rounded-lg text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-all"
-                      aria-label="View on GitHub"
-                    >
-                      <GitHubIcon size={16} />
-                    </a>
-                  )}
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="p-1.5 rounded-lg text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/10 transition-all"
+                        aria-label="View on GitHub"
+                      >
+                        <GitHubIcon size={16} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             )
