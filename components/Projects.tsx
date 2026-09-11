@@ -35,8 +35,8 @@ const projects = [
     featured: true,
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
     github: 'https://github.com/sruthisDev/Modular-Chatbot',
-    demoUrl: '/modular-rag-architecture-paper.pdf',
-    demoLabel: 'View Report',
+    demoUrl: 'https://doi.org/10.1109/BigDataService70481.2026.00047',
+    demoLabel: 'Published Paper',
   },
   {
     title: 'Strawberry Ripeness Classifier',
@@ -155,7 +155,12 @@ export default function Projects() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.07 }}
                 whileHover={{ y: -5 }}
+                onClick={() => {
+                  if (project.demoUrl) window.open(project.demoUrl, '_blank', 'noopener,noreferrer')
+                }}
                 className={`card-base p-6 group hover:shadow-xl hover:shadow-amber-500/5 flex flex-col ${
+                  project.demoUrl ? 'cursor-pointer' : ''
+                } ${
                   project.featured
                     ? 'border-amber-400/30 dark:border-amber-500/20'
                     : 'hover:border-amber-400/25 dark:hover:border-amber-500/15'
