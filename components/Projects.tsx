@@ -35,6 +35,8 @@ const projects = [
     featured: true,
     tech: ['Python', 'ChromaDB', 'HuggingFace', 'Ollama', 'FastAPI', 'ReactJS'],
     github: 'https://github.com/sruthisDev/Modular-Chatbot',
+    demoUrl: '/modular-rag-architecture-paper.pdf',
+    demoLabel: 'View Report',
   },
   {
     title: 'Strawberry Ripeness Classifier',
