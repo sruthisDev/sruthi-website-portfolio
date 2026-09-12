@@ -62,22 +62,10 @@ const experiences = [
   },
   {
     type: 'industry',
-    title: 'Web Developer',
-    company: 'Hyper Interact Services',
-    location: 'India',
-    period: 'Feb 2020 – May 2021',
-    bullets: [
-      'Developed and managed web applications tailored for SEM campaigns.',
-      'Created and optimized landing pages to enhance user engagement.',
-    ],
-    tech: ['Drupal', 'PHP', 'JavaScript', 'MySQL'],
-  },
-  {
-    type: 'industry',
     title: 'Senior Software Engineer',
     company: 'Foray Software Private Limited',
     location: 'India',
-    period: 'July 2019 – Oct 2019',
+    period: 'July 2019 – May 2021',
     bullets: [
       'Enhanced front-end inventory search functionality for Mars employees — 30% faster search, 15% increase in task efficiency.',
       'Partnered with cross-functional teams to integrate and ensure seamless functionality.',
