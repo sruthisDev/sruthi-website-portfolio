@@ -70,21 +70,17 @@ WORK EXPERIENCE:
    - Served as mentor and onboarding lead
    Technologies: PHP, MySQL, JavaScript, EzPublish
 
-5. Web Developer — Hyper Interact Services (Feb 2020 – May 2021)
-   - Developed web apps for SEM campaigns, optimized landing pages
-   Technologies: Drupal, PHP, JavaScript, MySQL
-
-6. Senior Software Engineer — Foray Software Private Limited (July 2019 – Oct 2019)
+5. Senior Software Engineer — Foray Software Private Limited (July 2019 – May 2021)
    - Enhanced inventory search for Mars employees: 30% faster search, 15% efficiency increase
    Technologies: Drupal, JavaScript, MySQL
 
-7. Associate Analyst — PurpleTalk (Feb 2017 – June 2019)
+6. Associate Analyst — PurpleTalk (Feb 2017 – June 2019)
    - Canya App: peer-to-peer digital services Android app
    - Cuckuu App: social networking alarm app — Best Performance Award
    - SILA: payment & invoice module for Attendance Management — Best Employee Award
    Technologies: Yii Framework, MongoDB, JavaScript, jQuery
 
-8. Research Associate / Intern — Excellera (GVK Bio) (June 2015 – Dec 2016)
+7. Research Associate / Intern — Excellera (GVK Bio) (June 2015 – Dec 2016)
    - Built automated visualization tool for biological pathway mapping — 25% workflow improvement
    Technologies: PHP, JavaScript, jQuery, Ajax, D3.js, HTML/CSS
 
